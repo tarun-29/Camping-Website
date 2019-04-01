@@ -10,7 +10,7 @@ var passport = require('passport');
 var LocalStrategy = require("passport-local");
 var methodOverride = require("method-override")
 var User = require("./models/user");
-const port = process.env.port||8000;
+// const port = process.env.port||8000;
 
 var commentRoutes = require("./routes/comments");
 var campgroundRoutes = require("./routes/campgrounds")
@@ -18,10 +18,7 @@ var indexRoutes = require("./routes/index")
 
 
 
-// mongoose.connect("mongodb://localhost/yelp_camp_v5");
-mongoose.connect("mongodb+srv://TarunKantiwal:29Tarun%40123@yelpcamp-mhflg.mongodb.net/test?retryWrites=true");
-
-// mongodb+srv://TarunKantiwal:29Tarun@123@yelpcamp-mhflg.mongodb.net/test?retryWrites=true
+mongoose.connect("mongodb://localhost/yelp_camp_v5");
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine","ejs");
 app.use(express.static(__dirname + '/public'));
@@ -31,7 +28,7 @@ app.use(flash());
 
 //PASSPORT CONFIGURATION
 app.use(require("express-session")({
-    secret: "ONCE AGAIN RUSTY WINS",
+    secret: "ONCE AGAIN Cat WINS",
     resave: false,
     saveUninitialized: false
 }));
@@ -56,6 +53,6 @@ app.use("/campgrounds",campgroundRoutes);
 app.use("/campgrounds/:id/comments",commentRoutes);
 
 
-app.listen(port, function(req, res){
+app.listen(8080, function(req, res){
      console.log("YelpCamp server is started");
 })
